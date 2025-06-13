@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/deyanslavkov/jenkins-ci.git'
+                git branch: 'main', url: 'https://github.com/deyanslavkov/jenkins-ci.git'
             }
         }
         stage('Install Dependencies') {
