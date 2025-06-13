@@ -12,9 +12,13 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Run App') {
+		stage('Restart App with PM2') {
             steps {
-                sh 'nohup npm start &'
+                sh '''
+                pm2 stop app || true
+                pm2 delete app || true
+                pm2 start index.js --name app
+                '''
             }
         }
     }
